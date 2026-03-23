@@ -1,0 +1,45 @@
+/* Runner / Outdoor — utilitarian, performance-focused, bold */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --font-body: 'Space Grotesk', system-ui, sans-serif;
+  --font-heading: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'Space Mono', monospace;
+
+  --color-bg: #f8faf8;
+  --color-text: #1a2e1a;
+  --color-text-secondary: #3d5a3d;
+  --color-text-muted: #7a947a;
+  --color-link: #16803c;
+  --color-border: #d4e4d4;
+  --color-tag-bg: #e8f5e8;
+  --color-tag-text: #15572f;
+  --color-code-bg: #edf3ed;
+
+  --max-width: 740px;
+}
+
+header {
+  background: #1a2e1a;
+  border-bottom: none;
+}
+
+header nav a {
+  color: #e8f5e8;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+article h1 {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.article-content h2 {
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  color: var(--color-link);
+}

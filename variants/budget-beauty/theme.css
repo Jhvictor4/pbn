@@ -1,0 +1,46 @@
+/* Budget Beauty — direct, value-focused, energetic */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-heading: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'SFMono-Regular', monospace;
+
+  --color-bg: #ffffff;
+  --color-text: #18181b;
+  --color-text-secondary: #52525b;
+  --color-text-muted: #a1a1aa;
+  --color-link: #e11d48;
+  --color-border: #e4e4e7;
+  --color-tag-bg: #fff1f2;
+  --color-tag-text: #be123c;
+  --color-code-bg: #fafafa;
+
+  --max-width: 720px;
+}
+
+header {
+  background: #18181b;
+  border-bottom: none;
+  padding: 0.8rem 1.5rem;
+}
+
+header nav a {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+article h1 {
+  font-weight: 700;
+}
+
+.article-content h2 {
+  color: var(--color-link);
+  font-weight: 700;
+}
+
+.tag {
+  border: 1px solid var(--color-border);
+  background: transparent;
+}

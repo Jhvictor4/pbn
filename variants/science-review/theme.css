@@ -1,0 +1,50 @@
+/* Science Review — analytical, data-driven, academic */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --font-body: 'IBM Plex Sans', 'Helvetica Neue', sans-serif;
+  --font-heading: 'IBM Plex Sans', 'Helvetica Neue', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --color-bg: #f8f9fb;
+  --color-text: #1a1f36;
+  --color-text-secondary: #4a5568;
+  --color-text-muted: #8792a2;
+  --color-link: #0369a1;
+  --color-border: #dde2eb;
+  --color-tag-bg: #e0f2fe;
+  --color-tag-text: #075985;
+  --color-code-bg: #edf2f7;
+
+  --max-width: 740px;
+}
+
+header {
+  border-bottom: 2px solid var(--color-text);
+}
+
+header nav a {
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+}
+
+article h1 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.75rem;
+}
+
+.article-content h2 {
+  font-weight: 600;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.5rem;
+}
+
+.article-content table th {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
