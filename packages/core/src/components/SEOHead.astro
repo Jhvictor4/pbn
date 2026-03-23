@@ -1,0 +1,65 @@
+---
+interface Props {
+  title: string
+  description?: string
+  slug: string
+  siteName: string
+  siteUrl: string
+  keywords?: string[]
+  articleType?: string
+  publishedAt?: string
+  updatedAt?: string
+  authorName?: string
+}
+
+const {
+  title,
+  description,
+  slug,
+  siteName,
+  siteUrl,
+  keywords = [],
+  articleType,
+  publishedAt,
+  updatedAt,
+  authorName = siteName,
+} = Astro.props
+
+const canonicalUrl = `${siteUrl}/${slug}`
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description: description || '',
+  url: canonicalUrl,
+  datePublished: publishedAt,
+  dateModified: updatedAt || publishedAt,
+  author: {
+    '@type': 'Person',
+    name: authorName,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: siteName,
+  },
+  keywords: keywords.join(', '),
+}
+---
+
+<title>{title} | {siteName}</title>
+<meta name="description" content={description || ''} />
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- Open Graph -->
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description || ''} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:type" content="article" />
+
+<!-- Keywords -->
+{keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
+
+<!-- JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

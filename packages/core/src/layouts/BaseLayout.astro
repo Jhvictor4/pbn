@@ -1,0 +1,33 @@
+---
+interface Props {
+  title?: string
+  siteName: string
+  siteUrl: string
+}
+
+const { title, siteName, siteUrl } = Astro.props
+const pageTitle = title ? `${title} | ${siteName}` : siteName
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <slot name="head" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">{siteName}</a>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <p>&copy; {new Date().getFullYear()} {siteName}</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+---
+import BaseLayout from '@pbn/core/layouts/BaseLayout.astro'
+import ArticlePage from '@pbn/core/components/ArticlePage.astro'
+import { getArticlesForSite, getSiteConfig } from '@pbn/core/lib/content'
+
+export async function getStaticPaths() {
+  const siteId = import.meta.env.SITE_ID
+  if (!siteId) throw new Error('Missing SITE_ID env var')
+
+  const articles = await getArticlesForSite(siteId)
+
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }))
+}
+
+const { article } = Astro.props
+
+const siteId = import.meta.env.SITE_ID
+const siteConfig = await getSiteConfig(siteId)
+const siteName = siteConfig?.name || 'Blog'
+const siteUrl = import.meta.env.SITE_URL || `https://${siteConfig?.domain || 'localhost:9001'}`
+---
+
+<BaseLayout title={article.title} siteName={siteName} siteUrl={siteUrl}>
+  <ArticlePage
+    slot="default"
+    title={article.title}
+    content={article.content}
+    slug={article.slug}
+    description={article.meta_description}
+    keywords={article.target_keywords}
+    articleType={article.article_type}
+    publishedAt={article.created_at}
+    updatedAt={article.updated_at}
+    siteName={siteName}
+    siteUrl={siteUrl}
+  />
+</BaseLayout>
+
+<style>
+  article {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  article h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  .meta-description {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+  .article-content {
+    line-height: 1.8;
+    font-size: 1.05rem;
+  }
+  .tags {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .tag {
+    background: #f0f0f0;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: #555;
+  }
+</style>

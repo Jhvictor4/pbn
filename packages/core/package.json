@@ -1,0 +1,14 @@
+{
+  "name": "@pbn/core",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    "./layouts/*": "./src/layouts/*",
+    "./components/*": "./src/components/*",
+    "./lib/*": "./src/lib/*"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1"
+  }
+}

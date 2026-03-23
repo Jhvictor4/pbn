@@ -1,0 +1,52 @@
+---
+import BaseLayout from '@pbn/core/layouts/BaseLayout.astro'
+import { getArticlesForSite, getSiteConfig } from '@pbn/core/lib/content'
+
+const siteId = import.meta.env.SITE_ID
+if (!siteId) throw new Error('Missing SITE_ID env var')
+
+const siteConfig = await getSiteConfig(siteId)
+const siteName = siteConfig?.name || 'Blog'
+const siteUrl = import.meta.env.SITE_URL || `https://${siteConfig?.domain || 'localhost:9001'}`
+
+const articles = await getArticlesForSite(siteId)
+---
+
+<BaseLayout siteName={siteName} siteUrl={siteUrl}>
+  <h1>Latest Articles</h1>
+  {articles.length > 0 ? (
+    <ul class="article-list">
+      {articles.map((article) => (
+        <li>
+          <a href={`/${article.slug}`}>
+            <h2>{article.title}</h2>
+            {article.meta_description && <p>{article.meta_description}</p>}
+          </a>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p>No articles published yet.</p>
+  )}
+</BaseLayout>
+
+<style>
+  .article-list {
+    list-style: none;
+    padding: 0;
+  }
+  .article-list li {
+    margin-bottom: 2rem;
+  }
+  .article-list a {
+    text-decoration: none;
+    color: inherit;
+  }
+  .article-list h2 {
+    margin-bottom: 0.5rem;
+  }
+  .article-list p {
+    color: #666;
+    font-size: 0.9rem;
+  }
+</style>

@@ -1,0 +1,52 @@
+---
+import SEOHead from './SEOHead.astro'
+
+interface Props {
+  title: string
+  content: string
+  slug: string
+  description?: string
+  keywords?: string[]
+  articleType?: string
+  publishedAt?: string
+  updatedAt?: string
+  siteName: string
+  siteUrl: string
+}
+
+const {
+  title,
+  content,
+  slug,
+  description,
+  keywords,
+  articleType,
+  publishedAt,
+  updatedAt,
+  siteName,
+  siteUrl,
+} = Astro.props
+---
+
+<SEOHead
+  title={title}
+  description={description}
+  slug={slug}
+  siteName={siteName}
+  siteUrl={siteUrl}
+  keywords={keywords}
+  articleType={articleType}
+  publishedAt={publishedAt}
+  updatedAt={updatedAt}
+/>
+
+<article>
+  <h1>{title}</h1>
+  {description && <p class="meta-description">{description}</p>}
+  <div class="article-content" set:html={content} />
+  {keywords && keywords.length > 0 && (
+    <div class="tags">
+      {keywords.map((kw) => <span class="tag">{kw}</span>)}
+    </div>
+  )}
+</article>
