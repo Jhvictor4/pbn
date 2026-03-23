@@ -1,4 +1,6 @@
 ---
+import '../styles/base.css'
+
 interface Props {
   title?: string
   siteName: string
@@ -7,9 +9,6 @@ interface Props {
 
 const { title, siteName, siteUrl } = Astro.props
 const pageTitle = title ? `${title} | ${siteName}` : siteName
----
-
-import '../styles/base.css'
 ---
 
 <!doctype html>
